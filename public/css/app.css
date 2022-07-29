@@ -1,0 +1,64 @@
+section {
+    position: relative;
+    padding: 7.5rem 0;
+    overflow: hidden;
+}
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.pt-30px{
+    padding: 30px 0 0 0;
+}
+.pt-10px{
+    padding: 10px 0 0 0;
+}
+
+.pb-10px{
+    padding: 0 0 10px 0;
+}
+.pb-30px{
+    padding: 0 0 30px 0;
+}
+
+.mb-30px{
+    margin: 0 0 30px 0;
+}
+.mb-10px{
+    margin: 0 0 10px 0;
+}
+
+.card {
+    border: 1px solid #000;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0 0 30px 0;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+.room-backgroud{
+    background-color: #515151!important;
+    color: #fff;
+}
+.light-backgroud{
+    background-color: #ff0!important;
+    color: #000;
+}
+
+td {
+    padding: 15px 0!important;
+    border: 1px solid #000 !important;
+    text-align: center;
+}
