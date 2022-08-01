@@ -21,8 +21,8 @@
                                 <td colspan="1" class="light-backgroud"> {{ $rooms[$a][$i] }} </td>
                             @endif
 
-                            @if ($rooms[$a][$i] === "0")
-                                <td colspan="1" class=""> {{ $rooms[$a][$i] }} </td>
+                            @if ($rooms[$a][$i] === "0" || $rooms[$a][$i] === "0-C")
+                                <td colspan="1" class="">{{ $rooms[$a][$i] }}</td>
                             @endif
                         @endfor
                     </tr>

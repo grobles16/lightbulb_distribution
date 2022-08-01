@@ -51,19 +51,16 @@ class LightBulbController extends Controller
     private function set_LightBulb($rooms){
         try{
 
-            $column = array();
-            $rows   = array();
-
             for ($a = 0; $a < count($rooms); $a++) {
                 for ($b = 0; $b < count($rooms[$a]); $b++) {
-
+                    $row = $rooms[$a];
                     if($rooms[$a][$b] === '0'){
-                        
-                        $row    = $rooms[$a];
-                        if($this->checkColumn(array_column($rooms, $b), $b) == true){
-                            $rooms[$a][$b] = "0-L";
-                        }
 
+                        if($this->validateRoom_Row($row, $b) == true){
+                            $rooms[$a][$b] = '0-L';
+                        }else{
+                            $rooms[$a][$b] = '0-C';
+                        }
                     }
                 }
             }
@@ -75,40 +72,59 @@ class LightBulbController extends Controller
         }
     }
 
-    private function checkColumn($rooms, $index){
+    private function validateRoom_Row($rooms, $indexRoom){
 
         try{
-            $existLight = false;
-            $setLigth   = false;
-            $wall       = 0;
+            $light      = false;
+            $indexLight = 0;
+            $wall       = false;
+            $indexWall  = 0;
+            $after      = 0;
+            $before     = 0;
 
-            for($a = 0; $a < count($rooms); $a++){
+            for ($i = 0; $i < count($rooms); $i++) {
 
-                if($rooms[$a] === '0-L'){
-                    $existLight = true;
+                if($rooms[$i] === '0-L'){
+                    $light      = true;
+                    $indexLight = $i;
                 }
 
-                if($rooms[$a] == "1"){
+                if($rooms[$i] === '0'){
 
-                    if($index <= $a){
+                    $after      = $i + 1;
+                    $before     = $i - 1;
 
-                        if($existLight == false){
-                            $setLigth   = true;    
-                        }else{
-                            $wall = $a;
+                    if(!$light){
+                        if(isset($rooms[$after]) ){
+                            if(isset($rooms[$before]) ){
+                                if($rooms[$before] === '1'){
+                                    return true;
+                                }else{
+                                    return false;
+                                }
+                            }
+
+                            if($rooms[$after] === '1'){
+                                return false;
+                            }
+                            if($rooms[$after] === '0'){
+                                return true;
+                            }
                         }
-
                     }
 
+                    if($wall && $indexWall + 1 == $indexRoom){
+                        return true;
+                    }
                 }
 
-                // if($index > $wall){
-                //     $setLigth   = true;
-                //     $wall = 0;
-                // }
+                if($rooms[$i] === '1'){
+                    if($light && $indexLight < $i){
+                        $wall       = true;
+                        $indexWall  = $i;
+                    }
+                }
             }
-
-            return $setLigth;
 
         }catch(Exception $e){
             abort(500, $e->getMessage());
