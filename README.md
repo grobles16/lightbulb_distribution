@@ -10,3 +10,12 @@ Despues de descargar solo debes ejecutar los siguientes comandos:
    ```sh
    php artisan storage:link
    ```
+3. Hacer una copia del archivo .env.example a .env 
+4. Obtener token
+   ```sh
+   php artisan key:generate
+   ```
+5. Ejecutar proyecto
+   ```sh
+   php artisan serve
+   ```
