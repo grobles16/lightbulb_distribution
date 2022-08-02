@@ -6,6 +6,9 @@
             <div class="col-lg-12 pb-30px">
                 <h1>Cargar Habitación</h1>
             </div>
+            <div class="form-group col-lg-12">
+                <label>* Puedes llenar la matriz por medio de un archivo txt o ir a la carpeta public/files/room.txt</label>
+            </div>
             @if(session('alert'))
                 <div class="alert alert-success">
                     <label>{{ session('alert')}}</label>
