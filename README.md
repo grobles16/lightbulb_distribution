@@ -1,4 +1,4 @@
-# Test - Distribución de bombillos
+# Test - Distribución de bombillos (Laravel)
 
 # Installation
 Despues de descargar solo debes ejecutar los siguientes comandos:
